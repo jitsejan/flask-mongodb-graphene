@@ -17,6 +17,7 @@ lxml = "*"
 pandas = "*"
 requests = "*"
 cssselect = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.7"
