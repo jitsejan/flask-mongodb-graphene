@@ -29,7 +29,7 @@ In this project I will add data to a MongoDB database and make it accessible usi
 
   3 minutes later the cluster will be ready.
 
-  ![image-20200510215036769](images/fmg_show_cluster.PNG)
+  ![image-20200510215036769](images/fmg_show_cluster.png)
 
   Go to *Security* -> *Database Access* and create a new Database User and give Admin or Read and Write access to the database. As an optional safety guard it is smart to enable the IP whitelist and add your own IP to the list to make sure no other IPs can access your database.
 
@@ -51,9 +51,9 @@ In this project I will add data to a MongoDB database and make it accessible usi
 
 As a dataset I will be using information from https://www.mariowiki.com/. More specifcally I will be crawling data from Super Mario 1 levels from https://www.mariowiki.com/Category:Super_Mario_Bros._Levels. Each page has a table containing the **Enemies** and the **Level statistics**.
 
-<img src="images/enemies.png" alt="enemies" style="zoom:50%;" />
+![image-20200510220012656](images/fmg_enemies.png)
 
-<img src="images/stats.png" alt="image-20200510220901041" style="zoom:50%;" />
+![image-20200510220012656](images/fmg_stats.png)
 
 I will just show the reduced version here, but the whole [script](https://github.com/jitsejan/flask-mongodb-graphene/blob/master/crawl.py) is availabe in my Github repo. The script will run through the links on the website and retrieves meta data, the description, enemies and the statistics. The files are stored in a JSON file.
 
@@ -273,21 +273,21 @@ To populate the database run the script:
 
 ### Option 1. Verifying it using the website
 
-![image-20200515030104694](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200515030104694.png)
+![image-20200515030104694](images/fmg_verify_site.png)
 
 ### Option 2. Verify using MongoDB Compass
 
 #### Database overview
 
-![image-20200510230858416](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200510230858416.png)
+![image-20200510230858416](images/fmg_verify_compass.png)
 
 #### Collection overview
 
-![image-20200510231351275](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200510231351275.png)
+![image-20200510231351275](images/fmg_verify_compass_collection.png)
 
 #### Detailed collection view
 
-![image-20200510231508583](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200510231508583.png)
+![image-20200510231508583](images/fmg_verify_compass_details.png)
 
 ### Option 3. Using Python
 
@@ -316,7 +316,7 @@ for powerup in Powerup.objects:
 # Fire Flower
 ```
 
-<img src="/Users/jitsejan/Library/Application Support/typora-user-images/image-20200515024948495.png" alt="image-20200515024948495" style="zoom:50%;" />
+![image-20200510231351275](images/fmg_verify_python.png)
 
 ## Setting up GraphQL
 
@@ -415,18 +415,23 @@ Go to your terminal and run the webapp:
 
 Go to `localhost:5002/graphql` and run the `allPowerups` query to get back the names of all the power-ups. 
 
-![image-20200515022601294](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200515022601294.png)
+![image-20200515022601294](images/fmg_verify_graphql.png)
 
 ### Option 2. Verify using GraphiQL application
 
 Using the standalone application [GraphiQL](https://www.electronjs.org/apps/graphiql) it is easy to test the GraphQL endpoint. Using the `allEnemies` query defined in `schema.py` we get back all the enemies and their amounts.
 
-![image-20200515024714801](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200515024714801.png)
+![image-20200515024714801](images/fmg_verify_graphiql.png)
 
 ### Option 3. Using Postman
 
 I have used [Postman](https://www.postman.com) for a long time for testing my REST APIs and fortunately it also supports GraphQL APIs. 
 
-![image-20200515022846519](/Users/jitsejan/Library/Application Support/typora-user-images/image-20200515022846519.png)
+![image-20200515022846519](images/fmg_verify_postman.png)
 
-And that should do it. In an
+And that should do it. In another post I want to explore GraphQL further and implement filtering and pagination. 
+
+## Sources
+
+- https://graphene-mongo.readthedocs.io/en/latest/tutorial.html
+- https://jeffersonheard.github.io/python/graphql/2018/12/08/graphene-python.html
